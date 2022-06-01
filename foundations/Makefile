@@ -22,7 +22,7 @@ development
 system_configuration
 under_the_hood
 part_2
-api
+#api
 endef
 
 default: $(PDF)
@@ -42,7 +42,23 @@ $(PDF): $(PDF:.pdf=.txt) manual.gosh Makefile \
 	cp $(TEXFILE).pdf $@
 	rm -f $(TEXFILE) $(TEXFILE).*
 
-$(PDF): img
+$(PDF) print.pdf cover.pdf: img
+
+print.pdf: $(PDF:.pdf=.txt) print.gosh Makefile \
+       $(wildcard img/*.pdf) \
+       $(wildcard img/*.tikz)
+	gosh --style print.gosh $(PDF:.pdf=.txt) > $(TEXFILE).tex
+	lualatex $(TEXFILE).tex
+	lualatex $(TEXFILE).tex
+	lualatex $(TEXFILE).tex
+	cp $(TEXFILE).pdf $@
+	rm -f $(TEXFILE) $(TEXFILE).*
+
+cover.pdf: cover.txt cover.gosh Makefile img img/cover.tikz
+	gosh --style cover.gosh cover.txt > $(TEXFILE).tex
+	pdflatex $(TEXFILE).tex
+	cp $(TEXFILE).pdf $@
+	rm -f $(TEXFILE) $(TEXFILE).*
 
 img:
 	ln -sf ../img
@@ -59,3 +75,5 @@ clean_spec:
 
 clean: clean_manual clean_spec
 
+colorpages: print.pdf
+	gs -q -o - -sDEVICE=inkcov print.pdf | grep -v "^ 0.00000  0.00000  0.00000" | wc -l
