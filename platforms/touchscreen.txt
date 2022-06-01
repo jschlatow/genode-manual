@@ -71,7 +71,8 @@ because those strings draw a direct relation to Linux source codes.
 !   compatible = "allwinner,sun8i-a23-rsb";
 !  compatible = "goodix,gt917s";
 !  compatible = "x-powers,axp803";
-! compatible = "pine64,pinephone-1.2", "pine64,pinephone", "allwinner,sun50i-a64";
+! compatible = "pine64,pinephone-1.2", "pine64,pinephone", \
+!              "allwinner,sun50i-a64";
 
 The actual touchscreen device is the "goodix,gt917s". A few other nodes
 are already familiar from the work with the display driver.
@@ -118,8 +119,8 @@ This gives us a new clue what to 'grep' for.
 
 ! src/linux$ grep -r TOUCHSCREEN_GOODIX
 !
-! drivers/input/touchscreen/Makefile:obj-$(CONFIG_TOUCHSCREEN_GOODIX) += goodix.o
-! drivers/input/touchscreen/Kconfig:config TOUCHSCREEN_GOODIX
+! drivers/input/.../Makefile:obj-$(CONFIG_TOUCHSCREEN_GOODIX) += goodix.o
+! drivers/input/.../Kconfig:config TOUCHSCREEN_GOODIX
 
 The 'Kconfig' file mentioning the kernel option gives us a few more hints.
 
@@ -186,8 +187,10 @@ I guess, you know what comes next:
 On the next iteration, the output looks different.
 
 ! Goodix-TS 0-005d: ID 917S, version: 0200
-! Goodix-TS 0-005d: Direct firmware load for goodix_917S_cfg.bin failed with error -2
-! input: Goodix Capacitive TouchScreen as /devices/platform/soc/1c2ac00.i2c/i2c-0/0-005d/input/input0
+! Goodix-TS 0-005d: Direct firmware load for goodix_917S_cfg.bin failed with
+!   error -2
+! input: Goodix Capacitive TouchScreen as
+!   /devices/platform/soc/1c2ac00.i2c/i2c-0/0-005d/input/input0
 
 In principle, we could add further kernel infrastructure to expose the driver
 as input/event interface in order to access it from the Linux user land.

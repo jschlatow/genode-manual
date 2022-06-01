@@ -246,14 +246,14 @@ interrupt controller without knowing the exact type of device.
 !             Memory_region { ::Board::Cpu_mmio::IRQ_CONTROLLER_REDIST_BASE,
 !                             ::Board::Cpu_mmio::IRQ_CONTROLLER_REDIST_SIZE })
 ! {
-!     ::Board::Pic pic {};
+!   ::Board::Pic pic {};
 !
-!     ... incomprehensible magic spells, some gibberish about GPIO, CCM, PLL ...
+!   ... incomprehensible magic spells, some gibberish about GPIO, CCM, PLL ...
 ! }
 !
 ! void Board::Cpu::wake_up_all_cpus(void * ip)
 ! {
-!     ... more magic spells, digressing into assembly code ...
+!   ... more magic spells, digressing into assembly code ...
 ! }
 
 The 'early_ram_regions', 'late_ram_regions', and 'core_mmio' data structures
@@ -424,7 +424,8 @@ support. First, we need a build directory for the ARMv8 architecture.
 
 ! $ ./tool/create_builddir arm_v8a
 ! Successfully created build directory at /.../genode/build/arm_v8a.
-! Please adjust /.../genode/build/arm_v8a/etc/build.conf according to your needs.
+! Please adjust /.../genode/build/arm_v8a/etc/build.conf according to
+! your needs.
 
 As suggested, we open _build/etc/build.conf_ in our favorite text editor.
 Normally, I enable parallel builds by uncommenting the corresponding line
@@ -762,9 +763,10 @@ predictably:
 ! $ make run/log KERNEL=hw BOARD=pine_a64lts
 ! ...
 !     COMPILE  core_region_map.o
-! In file included from /.../repos/allwinner/src/core/board/pine_a64lts/board.h:17,
-!                  from /.../repos/base-hw/src/core/platform.h:37,
-!                  from /.../repos/base-hw/src/core/core_region_map.cc:18:
+! In file included
+!     from /.../repos/allwinner/src/core/board/pine_a64lts/board.h:17,
+!     from /.../repos/base-hw/src/core/platform.h:37,
+!     from /.../repos/base-hw/src/core/core_region_map.cc:18:
 ! /.../repos/allwinner/src/include/hw/spec/arm_64/pine_a64lts_board.h:17:10:
 !            fatal error: drivers/uart/ns16550.h: No such file or directory
 !  #include <drivers/uart/ns16550.h>
@@ -890,7 +892,8 @@ Testing the system image on the board comes down to the following few steps.
 
 # Make sure to build the uImage using the 'image/uboot' RUN_OPT.
 
-  ! $ RUN_OPT='--include image/uboot' make run/log BOARD=pine_a64lts KERNEL=hw
+  ! $ RUN_OPT='--include image/uboot' \
+  !   make run/log BOARD=pine_a64lts KERNEL=hw
 
 # Copy the uImage from _build/arm_v8a/var/run/log/uImage_ to the TFTP
   directory. In my case, that is _/var/lib/tftpboot/_.

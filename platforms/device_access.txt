@@ -578,31 +578,31 @@ follows.
 !
 ! struct Test::Main
 ! {
-!     ...
+!   ...
 !
-!     enum { PB_EINT = 43 };
+!   enum { PB_EINT = 43 };
 !
-!     Irq_connection _irq { _env, PB_EINT };
+!   Irq_connection _irq { _env, PB_EINT };
 !
 !
-!     unsigned _count = 0;
+!   unsigned _count = 0;
 !
-!     void _handle_irq()
-!     {
-!         log("interrupt ", _count++, " occurred");
+!   void _handle_irq()
+!   {
+!       log("interrupt ", _count++, " occurred");
 !
-!         _pio.clear_pb2_status();
+!       _pio.clear_pb2_status();
 !
-!         _irq.ack_irq();
-!     }
+!       _irq.ack_irq();
+!   }
 !
-!     Signal_handler<Main> _irq_handler { _env.ep(), *this, &Main::_handle_irq };
+!   Signal_handler<Main> _irq_handler { _env.ep(), *this, &Main::_handle_irq };
 !
-!     Main(Env &env) : _env(env)
-!     {
-!         _irq.sigh(_irq_handler);
-!         _handle_irq();
-!     }
+!   Main(Env &env) : _env(env)
+!   {
+!       _irq.sigh(_irq_handler);
+!       _handle_irq();
+!   }
 ! };
 
 The following details about this code fragment are worth highlighting.

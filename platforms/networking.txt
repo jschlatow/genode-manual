@@ -380,7 +380,8 @@ interested in, let's have the Genode build system chew a bit on our driver:
 !    COMPILE  dummies.o
 !    COMPILE  main.o
 !    LINK     emac_nic_drv
-! drivers/net/ethernet/stmicro/stmmac/stmmac_main.o: in function `stmmac_cmdline_opt':
+! drivers/net/ethernet/stmicro/stmmac/stmmac_main.o:
+!    in function `stmmac_cmdline_opt':
 !                        stmmac_main.c:5379: undefined reference to `strsep'
 ! ...
 ! ... many more undefined references
@@ -525,11 +526,16 @@ following log output.
 !
 ! Genode 21.05-10-g51f02a668d9
 ! 2010 MiB RAM and 64533 caps assigned to init
-! [init -> emac_nic_drv] Error: Initcall __initcall_initialize_ptr_randomearly unknown in initcall database!
-! [init -> emac_nic_drv] Error: Initcall __initcall_init_jiffies_clocksource1 unknown in initcall database!
-! [init -> emac_nic_drv] Error: Initcall __initcall_stmmac_init6 unknown in initcall database!
-! [init -> emac_nic_drv] Error: Initcall __initcall_sync_state_resume_initcall7 unknown in initcall database!
-! [init -> emac_nic_drv] Error: Initcall __initcall_devlink_class_init2 unknown in initcall database!
+! [init -> emac_nic_drv] Error: Initcall 
+!          __initcall_initialize_ptr_randomearly unknown in initcall database!
+! [init -> emac_nic_drv] Error: Initcall
+!          __initcall_init_jiffies_clocksource1 unknown in initcall database!
+! [init -> emac_nic_drv] Error: Initcall
+!          __initcall_stmmac_init6 unknown in initcall database!
+! [init -> emac_nic_drv] Error: Initcall
+!          __initcall_sync_state_resume_initcall7 unknown in initcall database!
+! [init -> emac_nic_drv] Error: Initcall
+!          __initcall_devlink_class_init2 unknown in initcall database!
 ! [init -> emac_nic_drv] Error: Function kmem_cache_init not implemented yet!
 ! [init -> emac_nic_drv] Backtrace follows:
 ! [init -> emac_nic_drv] 0x1024034
@@ -1092,11 +1098,11 @@ dependency (.d) files. For reference, the _nic/emac/dep.list_ file is
 generated via following command (the paths are abbreviated).
 
 !build/arm_v8a$ ../../tool/dde_linux/list_dependencies \
-!               TARGET_DIR=drivers/nic/emac \
-!               LINUX_KERNEL_DIR=/path/to/linux/source/ \
-!               SOURCE_LIST_FILE=.../allwinner/src/drivers/nic/emac/source.list \
-!               DEP_LIST_FILE=.../allwinner/src/drivers/nic/emac/dep.list \
-!               generate
+!            TARGET_DIR=drivers/nic/emac \
+!            LINUX_KERNEL_DIR=/path/to/linux/source/ \
+!            SOURCE_LIST_FILE=.../allwinner/src/drivers/nic/emac/source.list \
+!            DEP_LIST_FILE=.../allwinner/src/drivers/nic/emac/dep.list \
+!            generate
 
 As reference for the recipe files needed, the depot recipes at
 [https://github.com/genodelabs/genode-allwinner/tree/master/recipes - allwinner/recipes/]

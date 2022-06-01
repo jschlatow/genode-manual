@@ -69,32 +69,42 @@ to the pattern (as expected at the caller site), we can narrow down the number
 of matches to a useful level.
 
 ! src/test/cpu_quota/main.cc:                  env.cpu()),
-! src/test/cpu_quota/main.cc:       Cpu_session::Quota quota = env.cpu().quota();
-! src/core/spec/arm_v8/virtualization/kernel/vm.cc: _vcpu_context(cpu_pool().cpu(cpu))
-! src/core/spec/arm_v8/virtualization/kernel/vm.cc: affinity(cpu_pool().cpu(cpu));
-! src/core/spec/arm_v7/virtualization/kernel/vm.cc: _vcpu_context(cpu_pool().cpu(cpu))
-! src/core/spec/arm_v7/virtualization/kernel/vm.cc: affinity(cpu_pool().cpu(cpu));
-! src/core/kernel/kernel.cc:    Cpu &cpu = cpu_pool().cpu(Cpu::executing_id());
-! src/core/kernel/cpu_mp.cc:    Irq(Board::Pic::IPI, cpu), cpu(cpu)
-! src/core/kernel/cpu.h:        Cpu & cpu(unsigned const id);
-! src/core/kernel/cpu.h:        Cpu & primary_cpu() { return cpu(Cpu::primary_id()); }
-! src/core/kernel/cpu.h:        Cpu & executing_cpu() { return cpu(Cpu::executing_id()); }
-! src/core/kernel/cpu.h:            for (unsigned i = 0; i < _count; i++) func(cpu(i));
+! src/test/cpu_quota/main.cc:    Cpu_session::Quota quota = env.cpu().quota();
+! src/core/spec/arm_v8/virtualization/kernel
+!   /vm.cc: _vcpu_context(cpu_pool().cpu(cpu))
+! src/core/spec/arm_v8/virtualization/kernel
+!   /vm.cc: affinity(cpu_pool().cpu(cpu));
+! src/core/spec/arm_v7/virtualization/kernel
+!   /vm.cc: _vcpu_context(cpu_pool().cpu(cpu))
+! src/core/spec/arm_v7/virtualization/kernel
+!   /vm.cc: affinity(cpu_pool().cpu(cpu));
+! src/core/kernel/kernel.cc:  Cpu &cpu = cpu_pool().cpu(Cpu::executing_id());
+! src/core/kernel/cpu_mp.cc:  Irq(Board::Pic::IPI, cpu), cpu(cpu)
+! src/core/kernel/cpu.h:      Cpu & cpu(unsigned const id);
+! src/core/kernel
+!   /cpu.h:    Cpu & primary_cpu() { return cpu(Cpu::primary_id()); }
+! src/core/kernel
+!   /cpu.h:    Cpu & executing_cpu() { return cpu(Cpu::executing_id()); }
+! src/core/kernel
+!   /cpu.h:        for (unsigned i = 0; i < _count; i++) func(cpu(i));
 ! src/core/kernel/cpu.cc:Cpu & Cpu_pool::cpu(unsigned const id)
 ! src/core/kernel/cpu_up.cc:Kernel::Cpu::Ipi::Ipi(Kernel::Cpu & cpu) : ...
 ! src/core/kernel/cpu_context.h:        void cpu(Cpu &cpu) { _cpu = &cpu; }
-! src/core/kernel/thread.cc:    Cpu & cpu = cpu_pool().cpu(user_arg_2());
+! src/core/kernel/thread.cc:  Cpu & cpu = cpu_pool().cpu(user_arg_2());
 
 From these results, we can immediately disregard the lines referring to
 _src/test/_. Also the virtualization-related matches are most likely not of
 interest. When inspecting the remaining lines, the number of potential callers
 comes down to 5:
 
-! src/core/kernel/kernel.cc:    Cpu &cpu = cpu_pool().cpu(Cpu::executing_id());
-! src/core/kernel/cpu.h:        Cpu & primary_cpu() { return cpu(Cpu::primary_id()); }
-! src/core/kernel/cpu.h:        Cpu & executing_cpu() { return cpu(Cpu::executing_id()); }
-! src/core/kernel/cpu.h:            for (unsigned i = 0; i < _count; i++) func(cpu(i));
-! src/core/kernel/thread.cc:    Cpu & cpu = cpu_pool().cpu(user_arg_2());
+! src/core/kernel/kernel.cc:  Cpu &cpu = cpu_pool().cpu(Cpu::executing_id());
+! src/core/kernel
+!   /cpu.h:    Cpu & primary_cpu() { return cpu(Cpu::primary_id()); }
+! src/core/kernel
+!   /cpu.h:    Cpu & executing_cpu() { return cpu(Cpu::executing_id()); }
+! src/core/kernel
+!   /cpu.h:        for (unsigned i = 0; i < _count; i++) func(cpu(i));
+! src/core/kernel/thread.cc:  Cpu & cpu = cpu_pool().cpu(user_arg_2());
 
 With such a low amount of callers, we can apply brute force by adding
 the following line just before each call.
@@ -215,10 +225,10 @@ command and end up at the following section of output:
 
 ! kernel():
 ! /.../base-hw/src/core/kernel/kernel.cc:25
-! ffffffc000058718:       12001c21        and     w1, w1, #0xff
-! ffffffc00005871c:       97fff8e3        bl      ffffffc000056aa8 <_ZN6Kernel8Cpu
+! ffffffc000058718:    12001c21     and     w1, w1, #0xff
+! ffffffc00005871c:    97fff8e3     bl      ffffffc000056aa8 <_ZN6Kernel8Cpu
 ! _pool3cpuEj>
-! ffffffc000058720:       aa0003f4        mov     x20, x0
+! ffffffc000058720:    aa0003f4     mov     x20, x0
 ! /.../base-hw/src/core/kernel/kernel.cc:29
 !         Cpu_job * new_job;
 

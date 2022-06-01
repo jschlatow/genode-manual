@@ -28,22 +28,22 @@ it is good to take Linux as a working starting point. When booting
 Armbian Linux, the display works after all. Observing the Linux boot, the
 following messages seem obviously be related to the display.
 
-! [    5.936404] Console: switching to colour frame buffer device 170x48
-! [    5.955920] simple-framebuffer be000000.framebuffer: fb0: simplefb registered!
-! [    5.959687] mmc1: new SDHC card at address 0001
-! [    5.967848] sun4i-drm display-engine: bound 1100000.mixer (ops 0xffff800010e340c0)
-! [    5.979490] sun4i-drm display-engine: bound 1200000.mixer (ops 0xffff800010e340c0)
-! [    5.990232] sun4i-drm display-engine: No panel or bridge found... RGB output disabled
-! [    6.000377] sun4i-drm display-engine: bound 1c0c000.lcd-controller (ops 0xffff800010e2f8d0)
-! [    6.012100] sun4i-drm display-engine: bound 1c0d000.lcd-controller (ops 0xffff800010e2f8d0)
-! [    6.026726] sun8i-dw-hdmi 1ee0000.hdmi: Detected HDMI TX controller v1.32a with HDCP (sun8i_dw_hdmi_phy)
-! [    6.117391] sun8i-dw-hdmi 1ee0000.hdmi: registered DesignWare HDMI I2C bus driver
-! [    6.130875] sun4i-drm display-engine: bound 1ee0000.hdmi (ops 0xffff800010e333f8)
-! [    6.200146] fb0: switching to sun4i-drm-fb from simple
-! [    6.210896] Console: switching to colour dummy device 80x25
-! [    6.216994] [drm] Initialized sun4i-drm 1.0.0 20150629 for display-engine on minor 0
-! [    6.603061] Console: switching to colour frame buffer device 170x48
-! [    6.641668] sun4i-drm display-engine: [drm] fb0: sun4i-drmdrmfb frame buffer device
+! [5.936404] Console: switching to colour frame buffer device 170x48
+! [5.955920] simple-framebuffer be000000.framebuffer: fb0: simplefb registered!
+! [5.959687] mmc1: new SDHC card at address 0001
+! [5.967848] sun4i-drm display-engine: bound 1100000.mixer (ops 0x...)
+! [5.979490] sun4i-drm display-engine: bound 1200000.mixer (ops 0x...)
+! [5.990232] sun4i-drm display-engine: No panel or bridge found... RGB outp...
+! [6.000377] sun4i-drm display-engine: bound 1c0c000.lcd-controller (ops 0x...)
+! [6.012100] sun4i-drm display-engine: bound 1c0d000.lcd-controller (ops 0x...)
+! [6.026726] sun8i-dw-hdmi 1ee0000.hdmi: Detected HDMI TX controller v1.32a...
+! [6.117391] sun8i-dw-hdmi 1ee0000.hdmi: registered DesignWare HDMI I2C bus...
+! [6.130875] sun4i-drm display-engine: bound 1ee0000.hdmi (ops 0x...)
+! [6.200146] fb0: switching to sun4i-drm-fb from simple
+! [6.210896] Console: switching to colour dummy device 80x25
+! [6.216994] [drm] Initialized sun4i-drm 1.0.0 20150629 for display-engine...
+! [6.603061] Console: switching to colour frame buffer device 170x48
+! [6.641668] sun4i-drm display-engine: [drm] fb0: sun4i-drmdrmfb frame buff...
 
 Correlating those words with the device tree brings us to the device node
 of the so-called display engine.
@@ -59,7 +59,8 @@ part of the Linux kernel that is of interest to us.
 
 
 ! linux$ grep -r "allwinner,sun50i-a64-display-engine"
-! drivers/gpu/drm/sun4i/sun4i_drv.c: { .compatible = "allwinner,sun50i-a64-display-engine" },
+! drivers/gpu/drm/sun4i/sun4i_drv.c:
+!   { .compatible = "allwinner,sun50i-a64-display-engine" },
 
 So _drivers/gpu/drm/sun4i/_ seems to be good starting point for exploration.
 
@@ -174,9 +175,9 @@ Tux shows up, and the last life signs of the kernel are the following
 messages.
 
 ! sun4i-drm display-engine: No panel or bridge found... RGB output disabled
-! sun4i-drm display-engine: bound 1c0c000.lcd-controller (ops 0xffffffc010272138)
-! sun4i-drm display-engine: bound 1c0d000.lcd-controller (ops 0xffffffc010272138)
-! sun4i-drm display-engine: bound 1ca0000.dsi (ops 0xffffffc010275810)
+! sun4i-drm display-engine: bound 1c0c000.lcd-controller (ops 0x...)
+! sun4i-drm display-engine: bound 1c0d000.lcd-controller (ops 0x...)
+! sun4i-drm display-engine: bound 1ca0000.dsi (ops 0x...)
 ! [drm] Initialized sun4i-drm 1.0.0 20150629 for display-engine on minor 0
 ! sun4i-drm display-engine: [drm] Cannot find any crtc or sizes
 ! Console: switching to colour frame buffer device 90x90
