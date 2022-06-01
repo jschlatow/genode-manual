@@ -1,4 +1,4 @@
-\usetikzlibrary{snakes}
+\usetikzlibrary{decorations.pathreplacing}
 
 \begin{tikzpicture}
 
@@ -200,7 +200,7 @@
 	\path[ArrowStyle] (C3) .. controls ++(-20ex,0ex) and ++(0ex,6ex) .. (C7)
 		node[midway,below] {\scriptsize\textit{logs}};
 
-	\draw [snake=brace] (C1) -- (C2);
+	\draw [decorate,decoration=brace] (C1) -- (C2);
 
 %	\path(N6.west)+(-10ex,0ex) coordinate (C1)
 %	\path[ArrowStyle] (N9.west) .. controls ++(-5ex,-1ex) and ++(1ex,6ex) .. (N1.south)
