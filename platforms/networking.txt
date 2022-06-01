@@ -144,7 +144,7 @@ as reference when porting a new network driver.
 :target.mk: The build-description file of the driver
 
 :main.cc: The main program, which initializes the Linux emulation
-  ('Lx_kit::initialize') along with the Genode service frontend
+  ('Lx_kit::ini\-tial\-ize') along with the Genode service frontend
   ('genode_uplink_init'), hosts the component's central I/O signal handler,
   defines the interplay between the execution of Linux and Genode code
   ('lx_emul_start_kernel' and 'Lx_kit::env().scheduler'), and supplies
