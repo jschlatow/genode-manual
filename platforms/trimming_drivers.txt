@@ -188,7 +188,8 @@ By searching for the compatible string inside the _drivers/pinctrl/sunxi_
 directory, we find the right spot.
 
 ! src/linux$ grep "allwinner,sun50i-a64-pinctrl" drivers/pinctrl/sunxi/*
-! drivers/pinctrl/sunxi/pinctrl-sun50i-a64.c:	{ .compatible = "allwinner,sun50i-a64-pinctrl", },
+! drivers/pinctrl/sunxi/pinctrl-sun50i-a64.c:
+!   { .compatible = "allwinner,sun50i-a64-pinctrl", },
 
 To mirror the driver's structure, it is good to start
 looking at the "allwinner,sun50i-a64-pinctrl" string and follow its tracks.

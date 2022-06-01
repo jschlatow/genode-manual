@@ -45,7 +45,8 @@ Upon the next execution of the 'make run/log KERNEL=hw BOARD=pine_a64lts'
 command, a new symbolic link appears at _/var/lib/tftpboot_.
 
 ! $ ls -la /var/lib/tftpboot/pine_a64lts 
-! lrwxrwxrwx ... /var/lib/tftpboot/pine_a64lts -> /.../build/arm_v8a/var/run/log/uImage
+! lrwxrwxrwx ... /var/lib/tftpboot/pine_a64lts
+!                  -> /.../build/arm_v8a/var/run/log/uImage
 
 The symlink is updated each time a run script is executed. It always points
 to the most recently built system image.

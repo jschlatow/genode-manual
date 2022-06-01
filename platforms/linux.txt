@@ -752,7 +752,8 @@ the use of this particular SoC.
 ! VERSION   := 5.12.1
 ! DOWNLOADS := a64_linux.archive
 !
-! URL(a64_linux) := https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$(VERSION).tar.xz
+! URL(a64_linux) := https://cdn.kernel.org/pub/linux/kernel/ \
+!                   v5.x/linux-$(VERSION).tar.xz
 ! SHA(a64_linux) := 123
 ! DIR(a64_linux) := src/linux
 
@@ -766,7 +767,7 @@ With the port-description file and hash file in place, we can give the
 'a64_linux' port a try.
 
 ! genode$ ./tool/ports/prepare_port a64_linux
-! a64_linux  download https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.1.tar.xz
+! a64_linux  download https://cdn.kernel.org/.../linux-5.12.1.tar.xz
 ! Error: Hash sum check for a64_linux failed
 
 Even though the hash-sum check predictably failed, the download of the archive
@@ -808,7 +809,7 @@ With the hash updated, the next attempt to 'prepare_port' succeeds:
 
 The _src/linux/_ subdirectory contains the source tree of the kernel.
 
-! genode$ ls contrib/a64_linux-155f8b01cd911f42f23178571d70a2220612b634/src/linux/
+! genode$ ls contrib/a64_linux-.../src/linux/
 ! arch     CREDITS        fs       Kbuild   LICENSES     net      security  virt
 ! block    crypto         include  Kconfig  MAINTAINERS  README   sound
 ! certs    Documentation  init     kernel   Makefile     samples  tools

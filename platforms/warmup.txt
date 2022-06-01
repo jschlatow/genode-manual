@@ -358,7 +358,8 @@ For reference, here are the steps I took.
   ! CC      plat/allwinner/sun50i_a64/sunxi_power.c
   ! CC      plat/common/plat_gicv2.c
   ! ...
-  ! Built /home/no/pine64/arm-trusted-firmware/build/sun50i_a64/debug/bl31.bin successfully
+  ! Built /home/no/pine64/arm-trusted-firmware/build/sun50i_a64/debug
+  !       /bl31.bin successfully
 
   There are many more lines. They point us to interesting details. For example,
   _drivers/allwinner/axp/axp803.c_ contains the default settings of the AXP

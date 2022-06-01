@@ -74,16 +74,20 @@ to our SoC. So let's grep the source tree for any connection between "sun" and
 
 ! grep -r NS16550 | grep -i sun
 ! ...
-! include/configs/sunxi-common.h:# define CONFIG_SYS_NS16550_COM1  SUNXI_UART0_BASE
-! include/configs/sunxi-common.h:# define CONFIG_SYS_NS16550_COM2  SUNXI_UART1_BASE
+! include/configs/sunxi-common.h:
+!   # define CONFIG_SYS_NS16550_COM1  SUNXI_UART0_BASE
+! include/configs/sunxi-common.h:
+!   # define CONFIG_SYS_NS16550_COM2  SUNXI_UART1_BASE
 ! ...
 
 Next stop, SUNXI_UART0_BASE:
 
 ! grep -r SUNXI_UART0_BASE
 ! ...
-! arch/arm/include/asm/arch-sunxi/cpu_sun9i.h:#define SUNXI_UART0_BASE (REGS_APB1_BASE + 0x0000)
-! arch/arm/include/asm/arch-sunxi/cpu_sun4i.h:#define SUNXI_UART0_BASE 0x01c28000
+! arch/arm/include/asm/arch-sunxi/cpu_sun9i.h:
+!   #define SUNXI_UART0_BASE (REGS_APB1_BASE + 0x0000)
+! arch/arm/include/asm/arch-sunxi/cpu_sun4i.h:
+!   #define SUNXI_UART0_BASE 0x01c28000
 ! ...
 
 Now seeing the address 0x01c28000, we know for certain that we are looking at
