@@ -76,7 +76,7 @@ Given the set of files depicted above, we can immediately spot two
 construction sites, namely "bootstrap" and "core". The distinction between
 those two parts is illustrated in the following picture.
 
-[tikz img/base_hw_boot_steps]
+[tikz img/base_hw_boot_steps 100%]
 
 The *bootstrap* program is started by the boot loader while the CPU is running
 in physical mode. The MMU is disabled at this point.
@@ -392,7 +392,7 @@ name *pine_a64lts* seems sensible. Specific enough while still concise.
 For the initial content from our new _allwinner_ repository be blatantly
 mirror the files of the base-hw repository.
 
-[tikz img/mirror_imx8_pine]
+[tikz img/mirror_imx8_pine 100%]
 
 At the current stage, we are concerned about getting the build process right.
 To concentrate at this one thing at a time, let us pretend that the
