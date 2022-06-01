@@ -1,0 +1,67 @@
+
+proc cover_tikz {} { return {\input{img/cover.tikz}} }
+
+proc subtitle {} { return "Foundations" }
+
+proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.75,0.75,1}}}
+proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
+proc subtitlecol {} { return {\definecolor{subtitlecol}  {rgb}{0.95,0.90,0.5}}}
+
+proc spinewidth  {} { return "10.5mm" }
+proc bleedwidth  {} { return "2mm" }
+
+
+### WRITE HEADER OF TEX FILE ###
+proc produce_head_latex {} {
+	global title authors
+
+	printline "\\documentclass\[cmyk,coverwidth=148mm,coverheight=210mm,spinewidth=[spinewidth],flapwidth=0mm,bleedwidth=[bleedwidth],marklength=0mm\]{bookcover}"
+	printline {\newbookcovercomponenttype{center rotate}{\vfill\centering\rotatebox[origin=c]{90}{#1}\vfill}}
+	printline {\usepackage{epsfig}}
+	printline {\usepackage[T1]{fontenc}}
+	printline {\usepackage{lmodern}}
+	printline {\usepackage{ucs}}
+	printline {\usepackage[utf8x]{inputenc}}
+	printline {\usepackage[english]{babel}}
+	printline {\usepackage{palatino}}
+	printline {\usepackage{helvet}}
+	printline {\usepackage{courier}}
+
+	printline {\input{img/tikz-preamble.tex}}
+	printline {\begin{document}}
+	printline {\input{img/tikz-common.tex}}
+
+	printline {\begin{bookcover}}
+	printline "[titlecolor]"
+	printline "[titlecol]"
+	printline "[subtitlecol]"
+
+	printline {\bookcovercomponent{color}{bg whole}{top color=black!70, bottom color=titlecolor}}
+
+	printline "\\newcommand{\\thesubtitle}{[subtitle]}"
+	printline {\begin{bookcoverelement}{tikz}{bg front and wrap}}
+	printline "[cover_tikz]"
+	printline {\end{bookcoverelement}}
+
+	printline {\begin{bookcoverelement}{center rotate}{spine}}
+	printline {\large\sffamily}
+	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Genode OS Framework 22.05} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} Norman Feske} \hspace*{1cm}}}
+	printline {\end{bookcoverelement}}
+
+	printline {\begin{bookcoverelement}{normal}{back}[1.2cm,1.2cm,1.2cm,]}
+	printline {\centering}
+	printline {\vfill \epsfig{file=img/by-sa,angle=0,width=2.5cm} \hspace{0.3cm}}
+	printline {\begin{minipage}[b]{9.1cm} \raggedright \small}
+	printline {This work is licensed under the Creative Commons Attribution + ShareAlike}
+	printline {License (CC-BY-SA). To view a copy of the license, visit}
+	printline {http://creativecommons.org/licenses/by-sa/4.0/legalcode}
+	printline {\end{minipage}}
+	printline {\end{bookcoverelement}}
+}
+
+
+### WRITE TAIL OF TEX FILE ###
+proc produce_tail_latex {} {
+	printline "\\end{bookcover}"
+	printline "\\end{document}"
+}
