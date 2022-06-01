@@ -225,7 +225,7 @@ the platform driver. The following snippet highlights the important changes.
   a 'Platform::Connection' passing the Genode environment as argument.
   ! Platform::Connection _platform { _env };
   By passing the '_env', we explicitly give our consent that
-  the 'Platform::Connection' can have global side effects such as the
+  the 'Plat\-form::Con\-nec\-tion' can have global side effects such as the
   communication with the outside world.
 
 * Access to one particular device of the platform session can be obtained by
