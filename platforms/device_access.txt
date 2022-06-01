@@ -323,7 +323,7 @@ Isn't that wonderful?
 
 The following picture summarizes our scenario.
 
-[tikz img/pine_pin_state]
+[tikz img/pine_pin_state 100%]
 
 The pin 27 of the Euler connector goes to the PB2 pin of the SoC.
 Via the PB_CFG0 register, we configure this pin to be used as general-purpose
@@ -633,7 +633,7 @@ The following details about this code fragment are worth highlighting.
 
 The following illustration summarizes the scenario.
 
-[tikz img/pine_pin_interrupt]
+[tikz img/pine_pin_interrupt 100%]
 
 The exact conditions for triggering an interrupt can be configured for the pin
 using the PB External Interrupt Configure Register 0 (PB_EINT_CFG0).

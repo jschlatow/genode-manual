@@ -69,7 +69,7 @@ aggregated members. As illustrated by the following picture, the body
 of the constructor is called pretty late in the process of constructing
 an object.
 
-[tikz img/cxx_construction 50%]
+[tikz img/cxx_construction]
 
 Placing debug
 messages gets a little bit more cumbersome now. We have to disguise such
@@ -82,7 +82,7 @@ of a member.
 
 The effect of this instrumentation looks as follows.
 
-[tikz img/cxx_construction_log 50%]
+[tikz img/cxx_construction_log]
 
 The trick is to wrap the 'log' call into an expression that can be used as
 initialization of a dummy member. When the construction of the 'Cpu' object
