@@ -413,7 +413,7 @@ confidentiality, they are almost universally critical for availability.
 Resource multiplexers
 =====================
 
-[tikz img/resource_multiplexer]
+[tikz img/resource_multiplexer 100%]
   A GUI server multiplexes the physical framebuffer and input devices among
   multiple applications.
 
@@ -1502,7 +1502,7 @@ feature, such as outward-facing network applications. But the complexity
 eventually becomes part of the TCB of all components including those that do
 not benefit from the feature.
 
-[tikz img/nitpicker_wm]
+[tikz img/nitpicker_wm 100%]
   The nitpicker GUI accompanied with a window manager that interposes
   the nitpicker session interface for the applications on the right. The
   applications on the left are still able to use nitpicker directly and
