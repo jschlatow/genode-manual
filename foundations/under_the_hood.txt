@@ -1836,7 +1836,7 @@ following problems:
   the respective PD.
 
 :Asynchronous notification mechanism:
-  We extended the NOVA kernel semaphores to support signalling via chained
+  We extended the NOVA kernel se\-ma\-phores to support signalling via chained
   NOVA semaphores. This extension enables the creation of kernel semaphores
   with a per-semaphore value, which can be bound to another kernel semaphore.
   Each bound semaphore corresponds to a Genode signal context. The

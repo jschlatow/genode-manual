@@ -776,8 +776,8 @@ board-kernel combinations NOVA on a PC and seL4 on a PC.
 ! autopilot -t x86_64-pc-sel4 -t x86_64-pc-nova -r log
 
 The build directory for each architecture is created at
-_/tmp/autopilot.<username>/<architecture>_ and the output of each run script is
-written to a file called _<architecture>.<board>.<kernel>.<run-script>.log_.
+_/tmp/autopilot.<user\-name>/<ar\-chi\-tec\-ture>_ and the output of each run script is
+written to a file called _<ar\-chi\-tec\-ture>.<board>.<ker\-nel>.<run-script>.log_.
 On stderr, autopilot prints the statistics about whether or not each run
 script executed successfully on each platform. If at least one run script
 failed, autopilot returns a non-zero exit code, which makes it straight
