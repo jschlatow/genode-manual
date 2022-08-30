@@ -117,7 +117,7 @@ creates a so-called _object identity_ that represents the RPC object in the
 kernel. Figure [img/object_identity] illustrates the relationship of an
 RPC object and its object identity.
 
-[tikz img/object_identity]
+[tikz img/object_identity 42%]
   Relationship between an RPC object and its corresponding object identity.
 
 For each protection domain, the kernel maintains a so-called capability space,
@@ -132,7 +132,7 @@ to the RPC object A.
 Delegation of authority and ownership
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-[tikz img/delegation]
+[tikz img/delegation 100%]
   The transitive delegation of a capability from one protection domain to
   others.
 
@@ -277,7 +277,7 @@ performs the steps illustrated in Figure [img/capability_argument].
 : $cap_{translated}$ is the local name of the same object identity at the
 : server side.
 
-[tikz img/capability_argument]
+[tikz img/capability_argument 100%]
   Procedure of delegating a capability specified as RPC argument from a
   client to a server.
 
@@ -1858,7 +1858,7 @@ most fundamental capability types.
 Server-side class structure
 ---------------------------
 
-[tikz img/rpc_classes]
+[tikz img/rpc_classes 100%]
   Server-side structure of the RPC mechanism
 
 Figure [img/rpc_classes] gives on overview of the C++ classes that are
@@ -1882,7 +1882,7 @@ Figure [img/new_rpc_obj_seq] shows the procedure of creating a new RPC object.
 The server component has already created an entrypoint, which, in turn,
 created its corresponding object pool.
 
-[tikz img/new_rpc_obj_seq]
+[tikz img/new_rpc_obj_seq 100%]
   Creation of a new RPC object
 
 # The server component creates an instance of an RPC object.
@@ -1930,7 +1930,7 @@ RPC-object invocation
 Figure [img/call_rpc_obj_seq] shows the flow of execution when a client
 calls an RPC object by invoking a capability.
 
-[tikz img/call_rpc_obj_seq]
+[tikz img/call_rpc_obj_seq 100%]
   Invocation of an RPC object
 
 # The client invokes the given capability using an instance of an RPC client
