@@ -97,7 +97,7 @@ operating systems, there are no answers.
 
 Apparently, the lack of assurance must be the price to pay for the
 accommodation of feature-rich dynamic workloads.
-
+\clearpage
 
 [tikz img/security_vs_ease_of_use]
 
