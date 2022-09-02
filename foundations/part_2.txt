@@ -1,1 +1,13 @@
 : \clearpage \part{Reference}
+
+This part is not included in the printed version of this document, please find
+it online:
+
+:Part II:
+
+  [https://genode.org/documentation/genode-foundations/23.05/functional_specification/index.html]
+
+
+: \begin{center}
+: \includegraphics[width=.5\textwidth]{part_2.png}
+: \end{center}
