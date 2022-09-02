@@ -1145,7 +1145,7 @@ On Genode, only core deals with physical memory pages. All other components
 use dataspaces as a uniform abstraction for memory, memory-mapped I/O
 regions, and ROM modules.
 
-[1] Interface specification in Section [Dataspace interface]
+[1] Interface specification in Part II (online-only)
 
 
 Region maps
@@ -1157,7 +1157,7 @@ time. Region maps are created implicitly as part of a PD session (Section
 [Protection domains (PD)]) or
 manually via the RM service (Section [Region-map management (RM)]).
 
-[1] Interface specification in Section [Region-map interface]
+[1] Interface specification in Part II (online-only)
 
 
 Populating an address space
@@ -1217,7 +1217,7 @@ visible within its local address space.
 The ROM session interface is described in more detail in
 Section [Read-only memory (ROM)].
 
-[1] Interface specification in Section [ROM session interface]
+[1] Interface specification in Part II (online-only)
 
 
 Protection domains (PD)
@@ -1232,7 +1232,7 @@ budget of physical memory and capabilities.
 Core's PD service also plays the role of a broker for asynchronous notifications
 on kernels that lack the semantics of Genode's signalling API.
 
-[1] Interface specification in Section [PD session interface]
+[1] Interface specification in Part II (online-only)
 
 Physical memory and capability allocation
 -----------------------------------------
@@ -1330,7 +1330,7 @@ the control, and the destruction of threads of execution.
 At session-construction time, the affinity of a CPU session with CPU cores can
 be defined via session arguments.
 
-[1] Interface specification in Section [CPU session interface]
+[1] Interface specification in Part II (online-only)
 
 Once created, the session can be used to create, control, and kill threads.
 Each thread created via a CPU session is represented by a thread capability.
@@ -1368,7 +1368,7 @@ write-combining policy of the memory-mapped resource as session arguments.
 Once an IO_MEM session is created, the IO_MEM client can request a dataspace
 containing the specified physical address range.
 
-[1] Interface specification in Section [IO_MEM session interface]
+[1] Interface specification in Part II (online-only)
 
 Core hands out each physical address range only once. Session requests for
 ranges that intersect with physical memory are denied. Even though the
@@ -1402,7 +1402,7 @@ The read and write operations take absolute port addresses as arguments.
 Core performs the I/O-port operation only if the specified port address lies
 within the port range of the session.
 
-[1] Interface specification in Section [IO_PORT session interface]
+[1] Interface specification in Part II (online-only)
 
 
 Reception of device interrupts (IRQ)
@@ -1420,7 +1420,7 @@ Once the interrupt occurs, core wakes up the IRQ client and masks the
 interrupt at the interrupt controller until the driver has acknowledged the
 completion of the IRQ handling and waits for the next interrupt.
 
-[1] Interface specification in Section [IRQ session interface]
+[1] Interface specification in Part II (online-only)
 
 
 Logging (LOG)
@@ -1436,7 +1436,7 @@ The LOG client transfers the to-be-printed characters as payload of plain RPC
 messages, which represents the simplest possible communication mechanism
 between the LOG client and core's LOG service.
 
-[1] Interface specification in Section [LOG session interface]
+[1] Interface specification in Part II (online-only)
 
 
 Event tracing (TRACE)

@@ -44,7 +44,7 @@ $(PDF): $(PDF:.pdf=.txt) manual.gosh Makefile \
 
 $(PDF) print.pdf cover.pdf: img
 
-print.pdf: $(PDF:.pdf=.txt) print.gosh Makefile \
+print.pdf: $(PDF:.pdf=.txt) print.gosh Makefile part_2.png \
        $(wildcard img/*.pdf) \
        $(wildcard img/*.tikz)
 	gosh --style print.gosh $(PDF:.pdf=.txt) > $(TEXFILE).tex
@@ -77,3 +77,6 @@ clean: clean_manual clean_spec
 
 colorpages: print.pdf
 	gs -q -o - -sDEVICE=inkcov print.pdf | grep -v "^ 0.00000  0.00000  0.00000" | wc -l
+
+part_2.png: Makefile
+	qrencode --dpi=300 -l H -v 15 -o $@ https://genode.org/documentation/genode-foundations/23.05/functional_specification/index.html
