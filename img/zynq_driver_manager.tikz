@@ -12,6 +12,12 @@
 
 	\tikzstyle{appnode}    = [treenode, bottom color=appcolor]
 
+	\tikzstyle{dirs} = [scale=0.6, inner sep=1ex, align=left]
+
+	\tikzstyle{dirbox} = [rounded corners=2, densely dotted, fill=white,
+	                      inner sep=1ex, fill=white, fill opacity=0.2, draw,
+	                      minimum width=20ex]
+
 	%
 	% Components
 	%
@@ -29,16 +35,29 @@
 	% drivers subsystem
 	\node[treenode, minimum width=26ex, above left=2ex and 20ex of drvmanager] (drivers)  {Drivers Subsystem};
 
+	% file system
+	\node[treenode, minimum width=26ex, minimum height=11ex, below=7ex of fpga] (vfs) {};
+	\path (vfs.north) node[service, scale=0.4] (fsservice) {};
+	\path (vfs.north) node[scale=0.7, yshift=-1.5ex] {File System};
+
+	\path (vfs.south) node[dirbox, yshift=1ex, anchor=south, minimum height=5ex] (vfsdir) { };
+	\node[at=(vfsdir.west), dirs, anchor=west] {
+		\texttt{/config}\\
+		\texttt{/zybo\_z720\_gpio-bitstream.bit}\\
+		\texttt{/zybo\_z720\_rgb-bitstream.bit}
+	};
+
+	\path (vfsdir.north) node[anchor=south] {VFS Server};
+
 	% config / state information flow
 	\tikzstyle{infoflow} = [opacity=0.5,
 	                        decoration={markings,
 	                        mark=between positions 0.03 and 1 step 1ex with {\arrow{latex}}},
 	                        postaction={decorate}]
 
-	\path[infoflow] (fpga.-170)+(0,-10ex) -- node[pos=-0.2] {devices} (fpga.-160);
-	\path[infoflow] (fpga.-150)+(0,-11ex) -- node[pos=-0.2] {fpga.bit} (fpga.-140);
-	\path[infoflow] (fpga.-30) +(0,-11ex) -- node[pos=-0.2] {fpga\_devices} (fpga.-40);
-	\path[infoflow] (fpga.-10) +(0,-10ex) -- node[pos=-0.2] {policy} (fpga.-20);
+	\path[infoflow] (fpga.-190)+(-5ex,0) -- node[anchor=east,pos=-0.1] {devices\_manager.config} (fpga.-188);
+	\path[infoflow] (fpga.-180)+(-5ex,0) -- node[anchor=east,pos=-0.1] {policy} (fpga.-180);
+	\path[infoflow] (fpga.-170)+(-5ex,0) -- node[anchor=east,pos=-0.1] {devices} (fpga.-172);
 
 	\path[infoflow] (fpga.east)
 		.. controls +(10ex,0) and +(0ex,-10ex) ..
@@ -53,5 +72,6 @@
 	%
 	\tikzstyle{treesessionarrow} = [arrow, thick]
 	\path[treesessionarrow] (drivers) -- (platformservice);
+	\path[treesessionarrow] (fpga) -- (fsservice);
 
 \end{tikzpicture}
