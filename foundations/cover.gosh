@@ -3,11 +3,11 @@ proc cover_tikz {} { return {\input{img/cover.tikz}} }
 
 proc subtitle {} { return "Foundations" }
 
-proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.75,0.75,1}}}
+proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.65,0.65,1}}}
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 proc subtitlecol {} { return {\definecolor{subtitlecol}  {rgb}{0.95,0.90,0.5}}}
 
-proc spinewidth  {} { return "12.48mm" }
+proc spinewidth  {} { return "18mm" }
 proc bleedwidth  {} { return "2mm" }
 
 
