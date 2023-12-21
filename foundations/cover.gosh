@@ -7,7 +7,7 @@ proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.65,0.65,1}}}
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 proc subtitlecol {} { return {\definecolor{subtitlecol}  {rgb}{0.95,0.90,0.5}}}
 
-proc spinewidth  {} { return "18mm" }
+proc spinewidth  {} { return "18.15mm" }
 proc bleedwidth  {} { return "2mm" }
 
 
@@ -45,7 +45,7 @@ proc produce_head_latex {} {
 
 	printline {\begin{bookcoverelement}{center rotate}{spine}}
 	printline {\large\sffamily}
-	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Genode OS Framework 22.05} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} Norman Feske} \hspace*{1cm}}}
+	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Genode OS Framework 23.05} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} Norman Feske} \hspace*{1cm}}}
 	printline {\end{bookcoverelement}}
 
 	printline {\begin{bookcoverelement}{normal}{back}[1.2cm,1.2cm,1.2cm,]}
