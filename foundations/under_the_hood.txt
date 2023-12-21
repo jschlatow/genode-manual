@@ -1909,6 +1909,7 @@ following problems:
   in case of a Message Signalled Interrupt (MSI), or in case of a shared
   interrupt, to the x86 platform driver.
 
+\clearpage
 Known limitations of NOVA
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
