@@ -192,7 +192,7 @@ _base-<platform>_, _base_, _os_, and _demo_.
 There are a number of commented-out lines that can be uncommented for
 enabling additional repositories.
 
-
+\clearpage
 Cleaning
 --------
 

@@ -1104,7 +1104,6 @@ Use cases
   data to display.
 
 
-\clearpage
 File system
 ~~~~~~~~~~~
 
