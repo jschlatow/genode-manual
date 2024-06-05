@@ -60,8 +60,8 @@ Your feedback is appreciated!
 
   [https://www.genode-labs.com]
 
-A printable PDF version of this document is available at the
-[https://genode.org/documentation/sculpt-24.10.pdf - Genode website].
+A digital HTML version of this document is available at the
+[https://genode.org/documentation/articles/sculpt-24-10 - Genode website].
 
 
 Hardware requirements and preparations
@@ -903,6 +903,8 @@ the following built-in ROM resources:
   the Sculpt system, like version numbers or the configured default depot
   user. It is used by the Sculpt manager and debugging-support components.
 
+\newpage
+
 Report
 ~~~~~~
 
@@ -1207,6 +1209,8 @@ Given the broad potential side effects of those parameters, this option should
 only be enabled in rare special cases. Grant it only to components you trust.
 
 
+\clearpage
+
 Service-level sandboxing
 ========================
 
@@ -1480,7 +1484,6 @@ Should you prefer to set up your machine for dual-booting Linux and Sculpt OS,
 you can find all information needed for supplementing a Sculpt OS boot entry
 to your existing boot loader at the /boot directory of the third partition of
 Sculpt's disk image.
-
 
 On-target system update
 =======================
