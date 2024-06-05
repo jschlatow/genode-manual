@@ -79,4 +79,4 @@ colorpages: print.pdf
 	gs -q -o - -sDEVICE=inkcov print.pdf | grep -v "^ 0.00000  0.00000  0.00000" | wc -l
 
 part_2.png: Makefile
-	qrencode --dpi=300 -l H -v 15 -o $@ https://genode.org/documentation/genode-foundations/23.05/functional_specification/index.html
+	qrencode --dpi=300 -l H -v 15 -o $@ https://genode.org/documentation/genode-foundations/24.05/api/index.html

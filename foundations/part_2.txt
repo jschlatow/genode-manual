@@ -5,7 +5,7 @@ it online:
 
 :Part II:
 
-  [https://genode.org/documentation/genode-foundations/23.05/functional_specification/index.html]
+  [https://genode.org/documentation/genode-foundations/24.05/api/index.html]
 
 
 : \begin{center}
