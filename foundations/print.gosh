@@ -48,6 +48,7 @@ proc produce_head_latex {} {
 	printline {\usepackage{xurl} % automatic line breaks within urls}
 	printline {\usepackage[htt]{hyphenat} % line breaks within texttt}
 	printline {\raggedbottom % do not stretch pages vertically}
+	printline {\newcommand{\sectionbreak}{\clearpage}}
 
 	printline {\begin{document}}
 
@@ -103,7 +104,7 @@ proc process_section_latex {txtblock} {
 	global section_tag
 	printline ""
 	printline "%     -+*|\[ [string toupper $title] \]|*+-\n"
-	printline "\\clearpage"
+	printline "\\sectionbreak"
 	printline "\\$section_tag[section_env_latex $title]"
 	handle_txtblock section [lrange $txtblock 2 end]
 }
