@@ -2,6 +2,8 @@ source "../foundations/cover.gosh"
 
 proc subtitle {} { return "Platforms" }
 
+proc version {} { return "23.05" }
+
 proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.71,0.99,0.71}}}
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 proc subtitlecol {} { return {\definecolor{subtitlecol}  {rgb}{0.93,1,0.55}}}

@@ -75,7 +75,7 @@
 %
 	\path (genode)
 		node[below=1.5cm, font=\normalsize \sffamily, color=titlecol,
-		     opacity=0.8, scale=2.1] (osf) {Operating System Framework 23.05};
+		     opacity=0.8, scale=2.1] (osf) {Operating System Framework \theversion};
 %
 %
 	\path (part.south)
