@@ -2090,8 +2090,6 @@ liveliness of the producer at the whim of the signal handler. Consequently,
 signals are void of any payload.
 
 
-\clearpage
-
 Shared memory
 ~~~~~~~~~~~~~
 
