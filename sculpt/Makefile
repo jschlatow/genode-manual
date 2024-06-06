@@ -24,6 +24,10 @@ print.pdf: $(TARGET:.pdf=.txt) print.gosh Makefile $(wildcard *.png) | img
 	pdflatex print.tex
 	pdflatex print.tex
 
+cover.pdf: cover.txt cover.gosh Makefile img img/cover_sculpt.tikz
+	gosh --style cover.gosh cover.txt > cover.tex
+	pdflatex cover.tex
+
 img:
 	ln -sf ../img
 

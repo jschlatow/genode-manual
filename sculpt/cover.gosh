@@ -1,0 +1,105 @@
+proc version {} { return "24.04" }
+
+proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
+
+proc spinewidth  {} { return "3.9mm" }
+proc bleedwidth  {} { return "2mm" }
+
+proc bg_tikz {} {
+	return {%
+	\path [fill overzoom image={img/sticks_blue.png}, fill image opacity=0.78] (part.north east) rectangle (part.south west);
+	\path [fill tile image={img/grid.png}, fill image opacity=0.78] (part.north east) rectangle (part.south west);
+	\path (part.south east)+(-.7cm,.7cm) node [anchor=south east, opacity=0.4] {\includegraphics[width=4cm]{img/genode_logo.png}};}
+}
+
+proc front_tikz {} {
+	return {%
+	\path (part.north)
+		node[below=1cm, font=\normalsize \sffamily, color=titlecol, scale=8,
+		     opacity=0.8] (genode) {SCULPT};
+%
+	\path (genode)
+		node[below=1.5cm, font=\normalsize \sffamily, color=titlecol,
+		     opacity=0.8, scale=2.1] (osf) {Operating System \theversion};
+%
+	\path (part.south)
+		node[anchor=south, rounded corners=4pt, fill, minimum width=5cm, minimum height=2.2cm, opacity=0.3] {};
+%
+	\path (part.south)+(0cm,1cm)
+		node[anchor=south, font=\normalsize \sffamily, color=titlecol,
+		     opacity=0.8, scale=1.9] {Norman Feske};}
+}
+
+proc back_tikz {} {
+	return {%
+		\path (part.south west)+(1.1cm, 3cm) coordinate (lefttop);
+		\path (part.south east)+(-1.1cm,0)   coordinate (rightbottom);
+		\fill [opacity=0.3, rounded corners=4pt] (lefttop) rectangle (rightbottom);}
+}
+
+### WRITE HEADER OF TEX FILE ###
+proc produce_head_latex {} {
+	global title authors
+
+	printline "\\documentclass\[cmyk,coverwidth=148mm,coverheight=210mm,spinewidth=[spinewidth],flapwidth=0mm,bleedwidth=[bleedwidth],marklength=0mm\]{bookcover}"
+	printline {\newbookcovercomponenttype{center rotate}{\vfill\centering\rotatebox[origin=c]{90}{#1}\vfill}}
+	printline {\usepackage{epsfig}}
+	printline {\usepackage[T1]{fontenc}}
+	printline {\usepackage{lmodern}}
+	printline {\usepackage{ucs}}
+	printline {\usepackage[utf8x]{inputenc}}
+	printline {\usepackage[english]{babel}}
+	printline {\usepackage{palatino}}
+	printline {\usepackage{helvet}}
+	printline {\usepackage{courier}}
+	printline {\usepackage{shadowtext}}
+
+	printline {\input{img/tikz-preamble.tex}}
+	printline {\usetikzlibrary{fill.image}}
+	printline {\begin{document}}
+	printline {\input{img/tikz-common.tex}}
+
+	printline {\begin{bookcover}}
+	printline "[titlecol]"
+
+	printline {\shadowoffset{.5pt}}
+	printline {\shadowrgb{.3,.3,.3}}
+	printline "\\newcommand{\\theversion}{[version]}"
+
+	printline {\begin{bookcoverelement}{tikz}{bg whole}}
+	printline "[bg_tikz]"
+	printline {\end{bookcoverelement}}
+
+	printline {\begin{bookcoverelement}{tikz}{bg front and wrap}}
+	printline "[front_tikz]"
+	printline {\end{bookcoverelement}}
+
+	printline {\bookcovercomponent{color}{bg spine}{opacity=0.3}}
+
+	printline {\begin{bookcoverelement}{center rotate}{spine}}
+	printline {\small\sffamily}
+	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Sculpt Operating System \theversion} \hfill {\color{titlecol} Norman Feske} \hspace*{1cm}}}
+	printline {\end{bookcoverelement}}
+
+	printline {\begin{bookcoverelement}{tikz}{bg back}}
+	printline "[back_tikz]"
+	printline {\end{bookcoverelement}}
+
+	printline {\begin{bookcoverelement}{normal}{back}[1.2cm,1.2cm,1cm,]}
+	printline {\centering}
+	printline {\vfill\epsfig{file=img/by-sa,angle=0,width=2.5cm} \hfill}
+	printline {\begin{minipage}[b]{9.1cm} \raggedright \small \color{titlecol}}
+	printline {This work is licensed under the Creative Commons Attribution + ShareAlike}
+	printline {License (CC-BY-SA). To view a copy of the license, visit}
+	printline {http://creativecommons.org/licenses/by-sa/4.0/legalcode}
+	printline {\end{minipage}}
+	printline {\hspace*{0.3cm}}
+	printline {\end{bookcoverelement}}
+}
+
+
+### WRITE TAIL OF TEX FILE ###
+proc produce_tail_latex {} {
+	printline "\\end{bookcover}"
+	printline "\\end{document}"
+}
