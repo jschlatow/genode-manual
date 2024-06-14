@@ -7,9 +7,9 @@ proc bleedwidth  {} { return "2mm" }
 
 proc bg_tikz {} {
 	return {%
-	\path [fill overzoom image={img/sticks_blue.png}, fill image opacity=0.78] (part.north east) rectangle (part.south west);
-	\path [fill tile image={img/grid.png}, fill image opacity=0.78] (part.north east) rectangle (part.south west);
-	\path (part.south east)+(-.7cm,.7cm) node [anchor=south east, opacity=0.4] {\includegraphics[width=4cm]{img/genode_logo.png}};}
+	\path [fill overzoom image={img/sticks_blue.png}, fill image opacity=0.7] (part.north east) rectangle (part.south west);
+	\path [fill tile image={img/grid.png}, fill image opacity=0.7] (part.north east) rectangle (part.south west);
+	\path (part.south east)+(-.7cm,.7cm) node [anchor=south east, opacity=0.45] {\includegraphics[width=4cm]{img/genode_logo.png}};}
 }
 
 proc front_tikz {} {
@@ -23,18 +23,18 @@ proc front_tikz {} {
 		     opacity=0.8, scale=2.1] (osf) {Operating System \theversion};
 %
 	\path (part.south)
-		node[anchor=south, rounded corners=4pt, fill, minimum width=5cm, minimum height=2.2cm, opacity=0.3] {};
+		node[anchor=south, rounded corners=4pt, fill, minimum width=5cm, minimum height=2.2cm, opacity=0.4] {};
 %
 	\path (part.south)+(0cm,1cm)
 		node[anchor=south, font=\normalsize \sffamily, color=titlecol,
-		     opacity=0.8, scale=1.9] {Norman Feske};}
+		     opacity=0.9, scale=1.9] {Norman Feske};}
 }
 
 proc back_tikz {} {
 	return {%
 		\path (part.south west)+(1.1cm, 3cm) coordinate (lefttop);
 		\path (part.south east)+(-1.1cm,0)   coordinate (rightbottom);
-		\fill [opacity=0.3, rounded corners=4pt] (lefttop) rectangle (rightbottom);}
+		\fill [opacity=0.4, rounded corners=4pt] (lefttop) rectangle (rightbottom);}
 }
 
 ### WRITE HEADER OF TEX FILE ###
@@ -74,7 +74,7 @@ proc produce_head_latex {} {
 	printline "[front_tikz]"
 	printline {\end{bookcoverelement}}
 
-	printline {\bookcovercomponent{color}{bg spine}{opacity=0.3}}
+	printline {\bookcovercomponent{color}{bg spine}{opacity=0.4}}
 
 	printline {\begin{bookcoverelement}{center rotate}{spine}}
 	printline {\small\sffamily}
