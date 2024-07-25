@@ -2,7 +2,7 @@ proc version {} { return "24.04" }
 
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 
-proc spinewidth  {} { return "3.9mm" }
+proc spinewidth  {} { return "4.2mm" }
 proc bleedwidth  {} { return "2mm" }
 
 proc bg_tikz {} {
