@@ -9,7 +9,7 @@ proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.65,0.65,1}}}
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 proc subtitlecol {} { return {\definecolor{subtitlecol}  {rgb}{0.95,0.90,0.5}}}
 
-proc spinewidth  {} { return "18.15mm" }
+proc spinewidth  {} { return "17.70mm" }
 proc bleedwidth  {} { return "2mm" }
 
 
