@@ -1,8 +1,8 @@
 \documentclass{scrartcl}
 
 %% support for CMYK color model. However, colors become bland when enabled
-\usepackage[rgb]{xcolor}
-\usepackage[rgb]{pgf-cmykshadings}
+\usepackage[cmyk]{xcolor}
+%\usepackage[cmyk]{pgf-cmykshadings}
 
 \input{tikz-preamble.tex}
 
@@ -12,7 +12,7 @@
 \end{tikzfadingfrompicture}
 
 % A4: 21.0 × 29.7
-\usepackage[paperwidth=21cm, paperheight=29.7cm]{geometry}
+\usepackage[paperwidth=212mm, paperheight=299mm]{geometry}
 
 % clickable URLs
 \usepackage[pdftex,hidelinks=true]{hyperref}
@@ -30,7 +30,7 @@
 	\draw [fill=white]
 		(current page.south west) rectangle (current page.north east);
 
-	\tikzstyle{section} = [minimum width=21cm, outer sep=0]
+	\tikzstyle{section} = [minimum width=212mm, outer sep=0]
 	\tikzstyle{user}    = [minimum width=5.25cm, minimum height=4cm, outer sep=0]
 
 	\definecolor{techcolor}      {rgb}{0.721,0.767,0.855}
@@ -43,7 +43,7 @@
 	% Genode as technology
 	%
 	\path (current page.north)
-		node[below=0cm, anchor=north, section, minimum height=6.5cm] (techoutline) {};
+		node[below=0cm, anchor=north, section, minimum height=7cm] (techoutline) {};
 
 	\path (techoutline.west) -- coordinate[pos=0.5]  (mid)    (techoutline.east);
 	\path (techoutline.west) -- coordinate[pos=0.4] (lefty)  (techoutline.east);
@@ -67,7 +67,7 @@
 	% Sculpt OS as showcase
 	%
 	\path (techoutline.south)
-		node[below=0cm, anchor=north, section, minimum height=13cm] (sculptoutline) {};
+		node[below=0cm, anchor=north, section, minimum height=14.5cm] (sculptoutline) {};
 
 	\path (sculptoutline.north)+(0,5ex)  coordinate (northup);
 	\path (sculptoutline.north)+(0,-0ex) coordinate (northdown);
@@ -92,35 +92,12 @@
 	% Ecosystem
 	%
 	\path (sculptoutline.south)
-		node[below=0cm, anchor=north, section, minimum height=6.5cm] (ecooutline) {};
+		node[below=0cm, anchor=north, section, minimum height=8.4cm] (ecooutline) {};
 
 	\path (ecooutline.north)+(0,5ex)  coordinate (northup);
 	\path (ecooutline.north)+(0,-0ex) coordinate (northdown);
 	\path (ecooutline.south)+(0,5ex)  coordinate (southup);
 	\path (ecooutline.south)+(0,-0ex) coordinate (southdown);
-
-	\path (techoutline.west) --
-		coordinate[pos=0]    (p1west) coordinate[pos=0.25] (p1east)
-		coordinate[pos=0.25] (p2west) coordinate[pos=0.5]  (p2east)
-		coordinate[pos=0.5]  (p3west) coordinate[pos=0.75] (p3east)
-		coordinate[pos=0.75] (p4west) coordinate[pos=1]    (p4east)
-		(techoutline.east);
-
-	\path (p1west) -- coordinate[pos=0.5]  (p1mid)    (p1east);
-	\path (p1west) -- coordinate[pos=0.25] (p1lefty)  (p1east);
-	\path (p1west) -- coordinate[pos=0.75] (p1righty) (p1east);
-
-	\path (p2west) -- coordinate[pos=0.5]  (p2mid)    (p2east);
-	\path (p2west) -- coordinate[pos=0.25] (p2lefty)  (p2east);
-	\path (p2west) -- coordinate[pos=0.75] (p2righty) (p2east);
-
-	\path (p3west) -- coordinate[pos=0.5]  (p3mid)    (p3east);
-	\path (p3west) -- coordinate[pos=0.25] (p3lefty)  (p3east);
-	\path (p3west) -- coordinate[pos=0.75] (p3righty) (p3east);
-
-	\path (p4west) -- coordinate[pos=0.5]  (p4mid)    (p4east);
-	\path (p4west) -- coordinate[pos=0.25] (p4lefty)  (p4east);
-	\path (p4west) -- coordinate[pos=0.75] (p4righty) (p4east);
 
 	\path[land, opacity=1, inner color=ecosystemcolor!50!white, outer color=ecosystemcolor]
 		(ecooutline.north west)
@@ -129,74 +106,8 @@
 		.. controls +(6ex,0ex) and +(-6ex, 0ex) .. (righty |- northdown)
 		.. controls +(6ex,0ex) and +(-6ex, 0ex) ..
 		(ecooutline.north east) --
-		(ecooutline.south east)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p4righty |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p4mid    |- southup)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p4lefty  |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p4west |- ecooutline.south)
-
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p3righty |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p3mid    |- southup)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p3lefty  |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p3west |- ecooutline.south)
-
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p2righty |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p2mid    |- southup)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p2lefty  |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p2west |- ecooutline.south)
-
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p1righty |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p1mid    |- southup)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p1lefty  |- southdown)
-		.. controls +(-4ex,0ex) and +(4ex, 0ex) .. (p1west |- ecooutline.south)
-		--
-		(ecooutline.south west) --cycle;
-
-
-	\path (p1mid |- ecooutline.south) node[below=0cm, anchor=north, user] (vendoroutline) { };
-	\path (p2mid |- ecooutline.south) node[below=0cm, anchor=north, user] (oemoutline) { };
-	\path (p3mid |- ecooutline.south) node[below=0cm, anchor=north, user] (productoutline) { };
-	\path (p4mid |- ecooutline.south) node[below=0cm, anchor=north, user] (researchoutline) { };
-
-	\path (vendoroutline.north)+(0,5ex)  coordinate (northup);
-	\path (vendoroutline.north)+(0,-0ex) coordinate (northdown);
-
-	\path[land, opacity=1, inner color=usercolor!75!white, outer color=usercolor]
-		(vendoroutline.north west)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p1lefty  |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p1mid    |- northup)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p1righty |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) ..
-		(vendoroutline.north east) -- (vendoroutline.south east) --
-		(vendoroutline.south west) --cycle;
-
-	\path[land, opacity=1, inner color=usercolor!75!white, outer color=usercolor]
-		(oemoutline.north west)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p2lefty  |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p2mid    |- northup)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p2righty |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) ..
-		(oemoutline.north east) -- (oemoutline.south east) --
-		(oemoutline.south west) --cycle;
-
-	\path[land, opacity=1, inner color=usercolor!75!white, outer color=usercolor]
-		(productoutline.north west)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p3lefty  |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p3mid    |- northup)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p3righty |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) ..
-		(productoutline.north east) -- (productoutline.south east) --
-		(productoutline.south west) --cycle;
-
-	\path[land, opacity=1, inner color=usercolor!75!white, outer color=usercolor]
-		(researchoutline.north west)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p4lefty  |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p4mid    |- northup)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) .. (p4righty |- northdown)
-		.. controls +(4ex,0ex) and +(-4ex, 0ex) ..
-		(researchoutline.north east) -- (researchoutline.south east) --
-		(researchoutline.south west) --cycle;
-
+		(ecooutline.south east) --
+		(ecooutline.south west) -- cycle;
 
 	\path (techoutline.north west)
 		node[inner sep=2ex, anchor=north west, font=\normalsize \sffamily, color=white,
@@ -225,7 +136,7 @@
 	\tikzstyle{bullet} = [inner ysep=0.7ex, anchor=north west, font=\normalsize \sffamily,
 	                      color=black, opacity=1, scale=1.2]
 
-	\path (genodetitle.south west)+(4ex,0) coordinate (banchor);
+	\path (genodetitle.south west)+(4ex,-2ex) coordinate (banchor);
 	\path (banchor.south west) node[bullet] (banchor) { Clean-slate microkernel architecture, not Unix-based };
 	\path (banchor.south west) node[bullet] (banchor) { System organized as (dynamic) hierarchy of sandboxes };
 	\path (banchor.south west) node[bullet] (banchor) { Resource checks and balances, default-deny, capability-based };
@@ -246,10 +157,10 @@
 	                          shadow blur radius=0.25ex},
 	                          inner sep=0.5ex]
 
-	\path (current page.center |- sculptoutline.north)+(-4ex,-15ex) node[anchor=north east, screenshot] (sculptpc)
+	\path (current page.center |- sculptoutline.north)+(-4ex,-17ex) node[anchor=north east, screenshot] (sculptpc)
 		{\includegraphics[width=8.0cm]{sculpt_2020-09-16.png}};
 
-	\path (current page.center |- sculptoutline.north)+(4ex,-15ex) node[anchor=north west, screenshot] (phonesection)
+	\path (current page.center |- sculptoutline.north)+(4ex,-17ex) node[anchor=north west, screenshot] (phonesection)
 		{\includegraphics[width=2.5cm]{pinephone_phone_section.png}};
 
 	\path (phonesection.east) node[right=1ex, screenshot] (softwaresection)
@@ -270,7 +181,7 @@
 	\path (softwaresection.north) node[anchor=south, font=\normalsize \sffamily,
 	                              color=black, opacity=1, scale=1.2] {PinePhone};
 
-	\path (sculpttitle.south west |- sculptpc.south)+(4ex,-5ex) coordinate (banchor);
+	\path (sculpttitle.south west |- sculptpc.south)+(4ex,-9ex) coordinate (banchor);
 
 	\path (banchor.south west) node[bullet] (banchor) { Attack surface reduced by 99\% };
 	\path (banchor.south west) node[bullet] (banchor) {
@@ -282,7 +193,7 @@
 	\tikzstyle{wwwlink} = [inner ysep=0.7ex, anchor=east, inner xsep=4ex, font=\normalsize \sffamily,
 	                      color=linkcolor, opacity=1, scale=1.2]
 
-	\path (ecooutline.north west)+(4ex,-4ex) coordinate (banchor);
+	\path (ecooutline.north west)+(4ex,-8ex) coordinate (banchor);
 	\path (banchor.south west) node[bullet] (banchor) { Interoperable with POSIX, C++, Qt, GNU, Chromium engine, OpenGL, Java ... };
 	\path (banchor.south west) node[bullet] (banchor) { Existing OSes usable as virtual machines };
 	\path (banchor.south west) node[bullet] (banchor) { Quarterly releases };
@@ -296,17 +207,6 @@
 
 	\tikzstyle{userrole} = [inner ysep=3ex, anchor=north, inner xsep=4ex, font=\normalsize \sffamily,
 	                      color=white, opacity=1, scale=1.5]
-
-	\path (vendoroutline.north)   node[userrole] (vendor)   {Chip Vendor};
-	\path (oemoutline.north)      node[userrole] (oem)      {OEM};
-	\path (productoutline.north)  node[userrole] (product)  {Solutions Provider};
-	\path (researchoutline.north) node[userrole] (research) {Systems Research};
-
-	\path (vendor.south) node[bullet, anchor=north] { SoC support };
-	\path (oem.south) node[bullet, anchor=north] (banchor) { Board support };
-
-	\path (product.south) node[bullet, anchor=north, align=center] { Market-tailored\\ Sculpt OS derivative };
-
 
 \end{tikzpicture}
 
