@@ -42,9 +42,16 @@ proc process_image_latex {txtblock} {
 	}
 	regsub { *$} $img_cap "" img_cap
 
+	set img_print_name "$img_name-print"
+	if {[file exists $img_name.png] && ![file exists $img_print_name.png]} {
+		exec -ignorestderr convert -brightness-contrast 20x18 $img_name.png $img_print_name.png
+	} else {
+		set img_print_name $img_name
+	}
+
 	printline ""
 	printline "\\begin{center}"
-	printline "  \\epsfig{file=$img_name,angle=$img_angle,width=[expr $img_size.0/100]\\$img_relw}"
+	printline "  \\epsfig{file=$img_print_name,angle=$img_angle,width=[expr $img_size.0/100]\\$img_relw}"
 	printline "  \\label{[label_latex $img_name]}"
 	printline " \\end{center}\n"
 }
