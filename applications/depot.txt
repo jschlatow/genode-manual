@@ -43,6 +43,7 @@ nomenclature as follows:
   processor architecture. If there is a _raw/_ subdirectory, Goa takes its
   entire content to create a raw archive named after the project.
 
+\clearpage
 :src/:
 
   Goa creates a source archive for a project if there exists a _src/_

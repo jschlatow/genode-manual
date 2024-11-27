@@ -398,6 +398,7 @@ node:
 !   <rom label="posix.lib.so"/>
 ! </content>
 
+\clearpage
 Once these stumbling blocks are out of the way, 'goa run' greets us with the
 following output:
 
@@ -759,7 +760,7 @@ argument to the following (just appending the "> /dev/terminal"):
 
 Upon the next attempt of 'goa run', magic happens:
 
-[image goa_bash_terminal]
+[image goa_bash_terminal 90%]
 
 We have just redirected the output of the bash command to our terminal, which
 used our TrueType pseudo-file-system driver to render glyphs on a pixel buffer
@@ -777,11 +778,11 @@ that bash will wait for a command typed in via stdin. The next 'goa run'
 will greet us with a shell prompt where we can type in bash commands like
 echo:
 
-[image goa_bash_interactive 60%]
+[image goa_bash_interactive 50%]
 
 Of course, we feel a sudden urge to also execute the 'ls' command.
 
-[image goa_ls_command_not_found 50%]
+[image goa_ls_command_not_found 40%]
 
 The 'ls' command is a separate Unix command that is not yet part of our
 scenario. It is covered by the following section.
@@ -858,7 +859,7 @@ archive.
 Remember from the end of the previous section that our attempt to issue
 'ls' resulted in the following message:
 
-[image goa_ls_command_not_found 50%]
+[image goa_ls_command_not_found 40%]
 
 Let's give 'goa run' another go now.
 
@@ -913,7 +914,7 @@ in the '<config>' of bash's '<start>' node.
 
 The next try of 'goa run' yields the following result:
 
-[image goa_ls_working 40%]
+[image goa_ls_working 30%]
 
 A look at _/bin/_ reveals the wealth of commands that have just become
 available at our finger tips.
@@ -927,7 +928,7 @@ Plumbing pipes
 Let us try to count'em via the 'wc -l' command ('wc -l' counts the number of
 lines).
 
-[image goa_pipe_error 70%]
+[image goa_pipe_error 60%]
 
 With our attempt of using a pipe, feeding the output of 'ls -1' via the '|'
 symbol as input into 'wc -l', we seem to hit another brick wall.
@@ -981,7 +982,7 @@ Also declare the "vfs_pipe.lib.so" ROM in our _pkg/unix/runtime_ file:
 With these minor tweaks in place, 'goa run' starts up successfully again.
 This time, our attempt to combine 'ls' with 'wc' works as intended!
 
-[image goa_ls_wc 50%]
+[image goa_ls_wc 40%]
 
 
 Life is not complete without Vim
@@ -1028,7 +1029,7 @@ the following line to its <vfs> configuration:
 
 Upon the next test run, we are greeted with another error message:
 
-[image goa_vim_no_sh 70%]
+[image goa_vim_no_sh 65%]
 
 For some tasks like file globbing, Vim spawns a shell as child process and
 expects the shell being available as _/bin/sh_. This default can be overridden

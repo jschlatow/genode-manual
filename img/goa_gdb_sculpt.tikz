@@ -24,7 +24,7 @@
 	%
 
 	\node[display] at (0, 0) (sculpt-pc) {};
-	\node[display] at (17,0) (goa-pc)    {};
+	\node[display] at (13,0) (goa-pc)    {};
 
 	\node[above=.5 of sculpt-pc, align=center, font=\Large\sffamily] {Sculpt OS};
 	\node[above=.5 of goa-pc,    align=center, font=\Large\sffamily] {Linux};

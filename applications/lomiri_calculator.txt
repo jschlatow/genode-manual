@@ -589,6 +589,8 @@ Finally, 'goa run' is able to start up the calculator app successfully. The
 _fb_sdl_ window may remain white though. A random mouse click into the window,
 however, lets the GUI pop up as shown below. That's good enough for now.
 
+\clearpage
+
 [image lomiri-calculator] Calculator app running on base-linux with Goa
 
 Unfortunately, you will notice substantial delays when interacting with the GUI

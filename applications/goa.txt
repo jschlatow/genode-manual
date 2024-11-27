@@ -271,7 +271,7 @@ This import file describes the download of only the specified subdirectory
 of the CMake project from GitHub. Let's give it a try:
 
 ! cmake_step2$ goa import
-! import  download https://github.com/Kitware/CMake/trunk/Help/guide/tutorial/Step2
+! import  download https://github.com/Kitware/CMake/[...]/tutorial/Step2
 ! import  generate import.hash
 
 After the command finished, you find the source code sitting nicely in a new
