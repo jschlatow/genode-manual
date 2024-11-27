@@ -157,15 +157,15 @@
 	\path[dirbox, fill opacity=0.2, fill=black] (vfsterminal.north west) -- (vfsterminal.south west)
 	   -- (terminalvfsbox.south east) -- (terminalvfsbox.north east);
 
-	\path (vfstitle)+(-110ex,-40ex) node[treenode, scale=3] (terminal) {Terminal};
+	\path (vfstitle)+(-60ex,-80ex) node[treenode, scale=3] (terminal) {Terminal};
 
-	\path (vfstitle)+(110ex,-40ex) node[treenode, scale=3] (router) {NIC Router};
+	\path (vfstitle)+(60ex,-80ex) node[treenode, scale=3] (router) {NIC Router};
 
 
-	\draw[arrow, sloped=false, line width=2] (tap0vfsbox.south)
-	       .. controls +(10ex,-20ex) and +(-10ex, -20ex)  .. node[scale=2, below] {nic/uplink session} (router.south);
+	\path (tap0vfsbox.south)
+	       edge [bend right=10,arrow,line width=2,sloped=false] node[scale=2, right] {nic/uplink session} (router.north);
 
-	\draw[arrow, sloped=false, line width=2] (terminalvfsbox.south)
-	       .. controls +(-10ex,-20ex) and +(10ex, -20ex) .. node[scale=2, below] {terminal session} (terminal.south);
+	\path (terminalvfsbox.south)
+	       edge [bend left=10,arrow,line width=2,sloped=false] node[scale=2, left] {terminal session} (terminal.north);
 
 \end{tikzpicture}
