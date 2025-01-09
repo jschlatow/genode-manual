@@ -1,7 +1,7 @@
 
 
                       =============================
-                      Sculpt Operating System 24.04
+                      Sculpt Operating System 24.10
                       =============================
 
 
