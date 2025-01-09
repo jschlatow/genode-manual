@@ -5,6 +5,8 @@ proc subtitle {} { return "Foundations" }
 
 proc version {} { return "24.05" }
 
+proc author {} { return "Norman Feske" }
+
 proc titlecolor  {} { return {\definecolor{titlecolor}   {rgb}{0.65,0.65,1}}}
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 proc subtitlecol {} { return {\definecolor{subtitlecol}  {rgb}{0.95,0.90,0.5}}}
@@ -42,13 +44,14 @@ proc produce_head_latex {} {
 
 	printline "\\newcommand{\\thesubtitle}{[subtitle]}"
 	printline "\\newcommand{\\theversion}{[version]}"
+	printline "\\newcommand{\\theauthor}{[author]}"
 	printline {\begin{bookcoverelement}{tikz}{bg front and wrap}}
 	printline "[cover_tikz]"
 	printline {\end{bookcoverelement}}
 
 	printline {\begin{bookcoverelement}{center rotate}{spine}}
 	printline {\large\sffamily}
-	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Genode OS Framework \theversion} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} Norman Feske} \hspace*{1cm}}}
+	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Genode OS Framework \theversion} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} \theauthor} \hspace*{1cm}}}
 	printline {\end{bookcoverelement}}
 
 	printline {\begin{bookcoverelement}{normal}{back}[1.2cm,1.2cm,1.2cm,]}
