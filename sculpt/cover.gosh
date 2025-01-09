@@ -1,4 +1,4 @@
-proc version {} { return "24.04" }
+proc version {} { return "24.10" }
 
 proc titlecol    {} { return {\definecolor{titlecol}     {rgb}{1,1,1}}}
 
