@@ -39,12 +39,14 @@ proc produce_head_latex {} {
 	printline {\usepackage{enumitem} % for colored items as used in spec }
 	printline {\setlist[description]{leftmargin=0.5cm,labelindent=0cm}}
 	printline {\usepackage{tabularx} % for tables with paragraphs as used in spec }
+	printline {\usepackage[skins,listings,breakable]{tcolorbox} % for nicely boxed listings }
+	# replace "empty" with "standard" and use "colback=red!10!white" for showing overful boxes
+	printline {\tcbset{empty,halign=flush left,tcbox width=forced left,frame engine=empty,left=3pt,top=2pt,bottom=2pt,borderline west={1.2pt}{0pt}{black!5}}}
 	printline {\input{img/tikz-preamble.tex}}
 	printline {\urlstyle{same}}
 	printline {\usepackage{microtype} % make justification nicer}
 	printline {\setlength{\parindent}{0pt}}
 	printline {\setlength{\parskip}{6pt plus 2pt minus 1pt}}
-	printline {\lstset{resetmargins=true,basicstyle=\fontsize{7.6pt}{8.5pt}\ttfamily}}
 	printline {\usepackage{xurl} % automatic line breaks within urls}
 	printline {\usepackage[htt]{hyphenat} % line breaks within texttt}
 	printline {\raggedbottom % do not stretch pages vertically}
@@ -177,24 +179,23 @@ proc process_verbatim_latex {txtblock} {
 		set txtblock [lrange $txtblock 0 [expr [llength $txtblock]-2]]
 	}
 
+	set breakable ""
+	if {[llength $txtblock] > 3} {
+		set breakable ",breakable" }
+
+	printline "\\begin{tcblisting}{listing options={style=tcblatex,breaklines=false,basicstyle=\\fontsize{7.6pt}{8.5pt}\\ttfamily},listing only$breakable}"
+
 	#
 	# For the output of verbatim text, we use 'puts' rather than
 	# 'printline' because 'printline' would indent the text, which
 	# is not desired within a verbatim environment.
 	#
-	printline "\\begin{flushleft}"
-	printline "\\begin{tikzpicture}"
-	printline "\\node (verbatim) {"
-	printline "\\begin{lstlisting}"
 	foreach txtline $txtblock {
 		set txt [linetxt $txtline]
 		regsub     {^\!} $txt ""   txt
 		regsub -all {\t} $txt "  " txt
 		puts "$txt"
 	}
-	printline "\\end{lstlisting}"
-	printline "};"
-	printline "\\path\[very thick, draw=black!5\] (verbatim.north west) -- (verbatim.south west);"
-	printline "\\end{tikzpicture}"
-	printline "\\end{flushleft}"
+
+	printline "\\end{tcblisting}"
 }
