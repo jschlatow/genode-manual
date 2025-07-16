@@ -1,9 +1,13 @@
 
 proc cover_tikz {} { return {\input{img/cover.tikz}} }
 
+proc title {} { return "Operating System Framework" }
+
+proc titleshort {} { return "Genode OS Framework" }
+
 proc subtitle {} { return "Foundations" }
 
-proc version {} { return "24.05" }
+proc version {} { return "25.05" }
 
 proc author {} { return "Norman Feske" }
 
@@ -42,6 +46,8 @@ proc produce_head_latex {} {
 
 	printline {\bookcovercomponent{color}{bg whole}{top color=black!70, bottom color=titlecolor}}
 
+	printline "\\newcommand{\\thetitle}{[title]}"
+	printline "\\newcommand{\\thetitleshort}{[titleshort]}"
 	printline "\\newcommand{\\thesubtitle}{[subtitle]}"
 	printline "\\newcommand{\\theversion}{[version]}"
 	printline "\\newcommand{\\theauthor}{[author]}"
@@ -51,7 +57,7 @@ proc produce_head_latex {} {
 
 	printline {\begin{bookcoverelement}{center rotate}{spine}}
 	printline {\large\sffamily}
-	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}Genode OS Framework \theversion} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} \theauthor} \hspace*{1cm}}}
+	printline {\parbox{\coverheight}{{\hspace{1cm}\bfseries\color{titlecol}\thetitleshort\ \theversion} \hfill {\bfseries\color{subtitlecol}\thesubtitle} \hfill {\color{black} \theauthor} \hspace*{1cm}}}
 	printline {\end{bookcoverelement}}
 
 	printline {\begin{bookcoverelement}{normal}{back}[1.2cm,1.2cm,1.2cm,]}

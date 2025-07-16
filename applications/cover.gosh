@@ -2,7 +2,11 @@ source "../foundations/cover.gosh"
 
 proc subtitle {} { return "Applications" }
 
-proc version {} { return "24.11" }
+proc title {} { return "Sculpt Operating System" }
+
+proc titleshort {} { return "Sculpt OS" }
+
+proc version {} { return "25.04" }
 
 proc author {} { return "Johannes Schlatow" }
 
