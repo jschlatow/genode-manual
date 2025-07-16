@@ -390,7 +390,6 @@ node:
 !   <rom label="posix.lib.so"/>
 ! </content>
 
-\clearpage
 Once these stumbling blocks are out of the way, 'goa run' greets us with the
 following output:
 
