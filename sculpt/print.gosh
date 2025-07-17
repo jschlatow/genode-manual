@@ -43,8 +43,9 @@ proc process_image_latex {txtblock} {
 	regsub { *$} $img_cap "" img_cap
 
 	set img_print_name "$img_name-print"
-	if {[file exists $img_name.png] && ![file exists $img_print_name.png]} {
-		exec -ignorestderr convert -brightness-contrast 20x18 $img_name.png $img_print_name.png
+	if {[file exists $img_name.png]} {
+		if {![file exists $img_print_name.png]} {
+			exec -ignorestderr convert -brightness-contrast 20x18 $img_name.png $img_print_name.png }
 	} else {
 		set img_print_name $img_name
 	}
