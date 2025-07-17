@@ -1,1 +1,1 @@
-: \clearpage \part{Foundations}
+: \part{Foundations}

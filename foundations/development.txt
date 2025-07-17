@@ -185,7 +185,6 @@ _base-<platform>_, _base_, _os_, and _demo_.
 There are a number of commented-out lines that can be uncommented for
 enabling additional repositories.
 
-\clearpage
 Cleaning
 --------
 
@@ -552,9 +551,10 @@ run modules:
 
 Executing NOVA in Qemu
 ----------------------
-
+: \begin{flushleft}
 !RUN_OPT = --include boot_dir/nova \
 !          --include power_on/qemu --include log/qemu --include image/iso
+: \end{flushleft}
 
 By including 'boot_dir/nova', the run tool assembles a boot directory equipped
 with a boot loader and a boot-loader configuration that is able to bootstrap

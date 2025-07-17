@@ -1686,9 +1686,6 @@ synchronous way. Section [Asynchronous bulk transfer - packet streams]
 combines asynchronous notifications with shared memory to largely
 decouple producers and consumers of high-throughput data streams.
 
-
-\clearpage
-
 Synchronous remote procedure calls (RPC)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1854,6 +1851,7 @@ Each RPC interface implicitly defines a corresponding capability type.
 Figure [img/capability_types] shows the inheritance graph of Genode's
 most fundamental capability types.
 
+: \clearpage
 
 Server-side class structure
 ---------------------------
@@ -1872,8 +1870,6 @@ As seen in the figure, the RPC object is a class template parametrized with
 its RPC interface. When instantiated, the dispatch function is generated
 by the C++ compiler according to the RPC interface.
 
-
-\clearpage
 
 RPC-object creation
 -------------------
@@ -1960,8 +1956,6 @@ calls an RPC object by invoking a capability.
   of the client, which can pick up the results of the RPC call.
 
 
-\clearpage
-
 Asynchronous notifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2010,8 +2004,6 @@ Figure [img/signal_seq] shows the interplay between two components.
 The component labeled as signal handler responds to potentially many
 external conditions propagated as signals. The component labeled as signal
 producer triggers a condition. Note that both can be arbitrary components.
-
-\clearpage
 
 [tikz img/signal_seq]
   Interplay between signal producer and signal handler

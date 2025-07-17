@@ -1,4 +1,4 @@
-: \clearpage \part{Reference}
+: \part{Reference}
 
 This part is not included in the printed version of this document, please find
 it online:
