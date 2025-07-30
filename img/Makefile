@@ -20,6 +20,9 @@ flyer.pdf: flyer.tex
 
 flyer.pdf: app_specific_tcb.pdf
 
+poster.pdf: flyer.pdf
+	cpdf -scale-to-fit "594mm 841mm" flyer.pdf -o $@
+
 
 #
 # Make each target depend on common included files and the Makefile
