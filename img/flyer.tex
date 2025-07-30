@@ -43,7 +43,7 @@
 	% Genode as technology
 	%
 	\path (current page.north)
-		node[below=0cm, anchor=north, section, minimum height=7cm] (techoutline) {};
+		node[below=0cm, anchor=north, section, minimum height=8cm] (techoutline) {};
 
 	\path (techoutline.west) -- coordinate[pos=0.5]  (mid)    (techoutline.east);
 	\path (techoutline.west) -- coordinate[pos=0.4] (lefty)  (techoutline.east);
@@ -67,7 +67,7 @@
 	% Sculpt OS as showcase
 	%
 	\path (techoutline.south)
-		node[below=0cm, anchor=north, section, minimum height=14.5cm] (sculptoutline) {};
+		node[below=0cm, anchor=north, section, minimum height=15cm] (sculptoutline) {};
 
 	\path (sculptoutline.north)+(0,5ex)  coordinate (northup);
 	\path (sculptoutline.north)+(0,-0ex) coordinate (northdown);
@@ -92,7 +92,7 @@
 	% Ecosystem
 	%
 	\path (sculptoutline.south)
-		node[below=0cm, anchor=north, section, minimum height=8.4cm] (ecooutline) {};
+		node[below=0cm, anchor=north, section, minimum height=6.9cm] (ecooutline) {};
 
 	\path (ecooutline.north)+(0,5ex)  coordinate (northup);
 	\path (ecooutline.north)+(0,-0ex) coordinate (northdown);
@@ -109,34 +109,33 @@
 		(ecooutline.south east) --
 		(ecooutline.south west) -- cycle;
 
-	\path (techoutline.north west)
-		node[inner sep=2ex, anchor=north west, font=\normalsize \sffamily, color=white,
-			 opacity=1, scale=2] (genodetitle) {GENODE Operating System Framework};
+	\path (techoutline.north west)+(0,-1ex)
+		node[inner sep=2ex, anchor=north west, font=\normalsize \sffamily \bfseries, color=black,
+			 opacity=0.9, scale=2.5] (genodetitle) {GENODE Operating System Framework};
 
-	\path (techoutline.north east)
-		node[inner sep=2ex, anchor=north east, font=\normalsize \sffamily, color=black,
-		     opacity=0.5, scale=2] {Technology};
+	\path (techoutline.south east)+(0,-1ex)
+		node[inner sep=2ex, anchor=south east, font=\normalsize \sffamily, color=white,
+		     opacity=1, scale=2] {Technology};
 
-	\path (sculptoutline.north west)
-		node[inner sep=2ex, anchor=north west, font=\normalsize \sffamily, color=white,
-			 opacity=1, scale=2] (sculpttitle) {Sculpt OS};
+	\path (sculptoutline.north west)+(0,1ex)
+		node[inner sep=2ex, anchor=north west, font=\normalsize \sffamily \bfseries, color=black,
+			 opacity=0.9, scale=2.5] (sculpttitle) {Sculpt OS};
 
-	\path (sculptoutline.north east)
-		node[inner sep=2ex, anchor=north east, font=\normalsize \sffamily, color=black,
-			 opacity=0.5, scale=2] (showcasetitle) {Showcase};
+	\path (sculptoutline.south east)+(0,-1ex)
+		node[inner sep=2ex, anchor=south east, font=\normalsize \sffamily, color=white,
+			 opacity=1, scale=2] (showcasetitle) {Showcase};
 
-	\path (sculpttitle) -- coordinate (slogan) (showcasetitle);
-	\path (slogan) node[font=\normalsize \sffamily, color=white, scale=1.1]
-		{ Sculpting Your custom-tailored OS from first principles };
+	\path (sculptoutline.north)+(0,-11ex) node[anchor=north, font=\normalsize \sffamily, color=black, opacity=0.9, scale=1.5]
+		{ Sculpting \textbf{your} custom-tailored OS from first principles };
 
-	\path (ecooutline.north east)
-		node[inner sep=2ex, anchor=north east, font=\normalsize \sffamily, color=black,
-		     opacity=0.5, scale=2] {Ecosystem};
+	\path (ecooutline.south east)
+		node[inner sep=2ex, anchor=south east, font=\normalsize \sffamily, color=white,
+		     opacity=1, scale=2] {Ecosystem};
 
 	\tikzstyle{bullet} = [inner ysep=0.7ex, anchor=north west, font=\normalsize \sffamily,
 	                      color=black, opacity=1, scale=1.2]
 
-	\path (genodetitle.south west)+(4ex,-2ex) coordinate (banchor);
+	\path (techoutline.north west)+(4ex,-2.8cm) coordinate (banchor);
 	\path (banchor.south west) node[bullet] (banchor) { Clean-slate microkernel architecture, not Unix-based };
 	\path (banchor.south west) node[bullet] (banchor) { System organized as (dynamic) hierarchy of sandboxes };
 	\path (banchor.south west) node[bullet] (banchor) { Resource checks and balances, default-deny, capability-based };
@@ -146,7 +145,7 @@
 	%
 	% App-specific TCB
 	%
-	\path (techoutline.east) node[anchor=east, scale=0.75, outer sep=1cm, yshift=-4ex] (tcb)
+	\path (techoutline.east) node[anchor=east, scale=0.75, outer sep=1cm, yshift=-2ex] (tcb)
 		{\includegraphics[width=5.3cm]{app_specific_tcb.pdf}};
 
 	%
@@ -157,10 +156,10 @@
 	                          shadow blur radius=0.25ex},
 	                          inner sep=0.5ex]
 
-	\path (current page.center |- sculptoutline.north)+(-4ex,-17ex) node[anchor=north east, screenshot] (sculptpc)
+	\path (current page.center |- sculptoutline.north)+(-4ex,-22ex) node[anchor=north east, screenshot] (sculptpc)
 		{\includegraphics[width=8.0cm]{sculpt_2020-09-16.png}};
 
-	\path (current page.center |- sculptoutline.north)+(4ex,-17ex) node[anchor=north west, screenshot] (phonesection)
+	\path (current page.center |- sculptoutline.north)+(4ex,-22ex) node[anchor=north west, screenshot] (phonesection)
 		{\includegraphics[width=2.5cm]{pinephone_phone_section.png}};
 
 	\path (phonesection.east) node[right=1ex, screenshot] (softwaresection)
@@ -181,7 +180,7 @@
 	\path (softwaresection.north) node[anchor=south, font=\normalsize \sffamily,
 	                              color=black, opacity=1, scale=1.2] {PinePhone};
 
-	\path (sculpttitle.south west |- sculptpc.south)+(4ex,-9ex) coordinate (banchor);
+	\path (sculptoutline.north west |- sculptpc.south)+(4ex,-1.5cm) coordinate (banchor);
 
 	\path (banchor.south west) node[bullet] (banchor) { Attack surface reduced by 99\% };
 	\path (banchor.south west) node[bullet] (banchor) {
@@ -193,7 +192,7 @@
 	\tikzstyle{wwwlink} = [inner ysep=0.7ex, anchor=east, inner xsep=4ex, font=\normalsize \sffamily,
 	                      color=linkcolor, opacity=1, scale=1.2]
 
-	\path (ecooutline.north west)+(4ex,-8ex) coordinate (banchor);
+	\path (ecooutline.north west)+(4ex,-5ex) coordinate (banchor);
 	\path (banchor.south west) node[bullet] (banchor) { Interoperable with POSIX, C++, Qt, GNU, Chromium engine, OpenGL, Java ... };
 	\path (banchor.south west) node[bullet] (banchor) { Existing OSes usable as virtual machines };
 	\path (banchor.south west) node[bullet] (banchor) { Quarterly releases };
